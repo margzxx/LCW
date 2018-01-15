@@ -1,0 +1,80 @@
+@include('layouts.header')
+
+<div class="container" style="padding-top: 50px; padding-bottom: 70px">
+
+	<form action="{{ url('login') }}" method="post">
+
+		{{ csrf_field() }}
+
+		<div class="row">
+
+			<div class="col-md-4">
+				&nbsp;
+			</div>
+
+			<div class="col-md-4">
+
+				<div class="well">
+
+				<center>
+				<h3 style="color:#333;">Sign In</h3>
+				</center>
+
+				@if($errors->any() || Session::get('error'))
+				<div class="alert alert-danger" role="alert">
+				  ERROR: The password you entered is incorrect. <a href="3">Lost your password?</a>
+				</div>
+				@endif
+
+				<br>
+
+				<label style="color:#333;">Username or Email</label>
+				<input type="email" name="email" class="form-control" placeholder="Email" required>
+
+				<br>
+
+				<label style="color:#333;">Password</label>
+				<input type="password" name="password" class="form-control" placeholder="Password" required>
+
+				<br>
+				
+
+					<input type="checkbox" name="is_signed"> Keep me signed in
+
+					<br><br>
+
+					<input type="submit" class="btn btn-primary form-control" value="Login" style="text-decoration: none; color: #000; line-height: .3em;">
+
+				<center>
+
+				<br><br>
+
+					<a href="#" style="color:#333;">
+					Forgot your password?
+					</a>
+
+					<br><br><br>
+				
+					Don't have an account yet? <a href="{{ url('register') }}">Sign Up</a>
+				</center>
+
+			</div>
+
+			</div>
+
+			<div class="col-md-4">
+				&nbsp;
+			</div>
+
+		</div>
+
+	</form>
+
+
+
+
+
+</div>
+
+
+@include('layouts.footer')
