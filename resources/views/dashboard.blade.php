@@ -5,6 +5,7 @@ use App\Answer;
 use App\Choice;
 use App\File;
 use App\Description;
+use App\Bookmark;
 ?>
 
 <div class="container" style="padding-top: 50px; padding-bottom: 70px">
@@ -12,18 +13,20 @@ use App\Description;
 	<div class="row">
 		
 		<div class="col-md-2">
+			<a href="{{ url('dashboard') }}" style="color: #333; text-decoration: none;">
 			<h3>Search</h3>
+			</a>
 		</div>
 
 		<div class="col-md-2">
-			<a href="{{ url('past-hires') }}" style="color: #333">
+			<a href="{{ url('past-hires') }}" style="color: #333;text-decoration: none;">
 				<h3>Past Hires</h3>
 			</a>
 		</div>
 
 		<div class="col-md-8">
-			<a href="{{ url('bookmarked-profiles') }}" style="color: #333">
-				<h3>Bookmarked Profiles</h3>
+			<a href="{{ url('bookmarked-profiles') }}" style="color: #333;text-decoration: none;">
+				<h3>Bookmarked Profiles ({{ Bookmark::where('en_id',Auth::user()->id)->count() }})</h3>
 			</a>
 		</div>
 

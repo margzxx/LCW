@@ -76,7 +76,9 @@ use App\Area;
 	<label>Order</label>
 	<input type="number" name="order" class="form-control">
 
-	<input type="submit" class="btn btn-primary">
+	<br>
+
+	<input type="submit" class="btn btn-primary" style="color: #333;line-height: .3em">
 
 	</form>
 
