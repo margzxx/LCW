@@ -81,4 +81,6 @@ Route::get('matches-va','HomeController@showMatchesVA');
 Route::get('approve-user-survey/{id}','HomeController@doApproveUserSurvey');
 Route::get('disapprove-user-survey/{id}','HomeController@doDisapproveUserSurvey');
 
+Route::get('bookmark-va/{id}','HomeController@doBookmarkVA');
+
 Route::get('debug','CoreController@doDebug');

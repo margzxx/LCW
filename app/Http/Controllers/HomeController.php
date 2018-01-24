@@ -22,6 +22,7 @@ use App\Question;
 use App\Skill;
 use App\Match;
 use App\Verification;
+use App\Bookmark;
 
 class HomeController extends Controller
 {
@@ -42,6 +43,21 @@ class HomeController extends Controller
 
 		return view('dashboard')->with('questions',$questions)
 		->with('users',$users);
+
+	}
+
+	public function doBookmarkVA(Request $request,$id){
+
+		$bookmark = new Bookmark;
+
+		$bookmark->en_id = Auth::user()->id;
+		$bookmark->va_id = $id;
+		$bookmark->status = 1;
+		$bookmark->save();
+
+		$request->session()->flash('success','Great! VA saved to your bookmarks');
+
+		return back();
 
 	}
 
