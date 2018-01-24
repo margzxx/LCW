@@ -1,4 +1,5 @@
 @include('layouts.portal_header')
+@include('layouts.modals')
 <?php
 use App\Question;
 use App\Answer;
@@ -536,7 +537,7 @@ use App\Verification;
 					@endif
 
 					<br><br>
-					<input type="button" class="btn btn-primary" value="CONTACT" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7;">
+					<input type="button" class="btn btn-primary" value="CONTACT" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7;" data-toggle="modal" data-target="#contactModal">
 					<br><br>
 					Contacted last {{ date('m/d/Y',strtotime(Verification::where('user_id',$user->id)->first()->created_at)) }}
 					<br>
@@ -604,5 +605,65 @@ use App\Verification;
 
 
 	</div>
+
+	<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+
+        <center>
+        <h3>Contact</h3>
+        </center>
+        
+        <form action="{{ url('send-email-to-va') }}" method="post">
+          
+          {{ csrf_field() }}
+
+          <label>Fullname</label>
+          <input type="text" name="name" class="form-control" value="{{ Answer::where('question_id',3)->where('user_id',$user->id)->first()->description }}">
+
+          <br>
+
+          <label>Retun To Email</label>
+          <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control">
+
+          <br>
+
+          <label>Subject</label>
+          <input type="text" name="subject" value="Are you available for work?" class="form-control">
+
+          <br>
+
+          <label>Use Email Template</label>
+          <select name="email_template" class="form-control">
+            <option value="Are you available for work">Are you available for work?</option>
+          </select>
+
+          <br>
+
+          <label>Message</label>
+          <textarea name="description" class="form-control" rows="7">Hi!
+
+          Hope you are having a great day. Just wondering if you are currently available for a part time job? If so please let me know and I will contact you about the details.
+
+          Thanks.
+
+          {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
+          </textarea>
+
+          <br>
+
+          <input type="submit" class="form-control btn btn-primary" value="Send Message" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7; line-height: .3em">
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal -->
 
 	@include('layouts.portal_footer')
