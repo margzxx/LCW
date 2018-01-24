@@ -2,6 +2,7 @@
 <?php
 use App\Question;
 use App\Answer;
+use App\Country;
 use App\Choice;
 use App\File;
 use App\Area;
@@ -147,6 +148,7 @@ use App\Description;
 					<label>{{ $question->description }}</label>
 
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
+
 
 					<input type="text" class="form-control" name="description[]" value="{{ Answer::where('question_id',$question->id)->where('user_id',Auth::user()->id)->first()->description }}" required>
 
@@ -384,7 +386,19 @@ use App\Description;
 
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
-					<input type="text" class="form-control" name="description[]" required>
+					@if($question->id == 3 || $question->id == 58)
+						<input type="text" class="form-control" name="description[]" value="{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}" required>
+					@elseif($question->id == 4 || $question->id == 59)
+						<input type="text" class="form-control" name="description[]" value="{{ Auth::user()->mobile_number }}" required>
+					@elseif($question->id == 5 || $question->id == 60)
+						<input type="text" class="form-control" name="description[]" value="+{{ Country::where('name',Auth::user()->country)->first()->calling_code }}" required>
+					@elseif($question->id == 9 || $question->id == 64)
+						<input type="text" class="form-control" name="description[]" value="{{ Country::where('name',Auth::user()->country)->first()->citizenship }}" required>
+					@elseif($question->id == 10 || $question->id == 63)
+						<input type="text" class="form-control" name="description[]" value="{{ Country::where('name',Auth::user()->country)->first()->capital }}" required>
+					@else
+						<input type="text" class="form-control" name="description[]" required>
+					@endif
 
 					<br>
 
@@ -402,7 +416,7 @@ use App\Description;
 
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
-					<input type="number" class="form-control" name="description[]" required>
+					<input type="number" class="form-control" name="description[]" value=0 min=0 required>
 
 					<br>
 
@@ -411,7 +425,11 @@ use App\Description;
 
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
-					<input type="email" class="form-control" name="description[]" required>
+					@if($question->id == 2 || $question->id == 57)
+						<input type="email" class="form-control" name="description[]" value="{{ Auth::user()->email }}" required>
+					@else
+						<input type="email" class="form-control" name="description[]" required>
+					@endif
 
 					<br>
 
@@ -429,7 +447,7 @@ use App\Description;
 
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
-					<input type="date" class="form-control" name="description[]">
+					<input type="date" class="form-control" name="description[]" required>
 
 					<br>
 
@@ -444,7 +462,7 @@ use App\Description;
 
 					<select class="form-control" name="description[]">
 						@foreach($countries as $country)
-
+						<option value="{{ Auth::user()->country }}">Currently: {{ Auth::user()->country }}</option>
 						<option value="{{ $country->name }}">{{ $country->name }}</option>
 						@endforeach
 					</select>

@@ -14,7 +14,7 @@
 
 			<div class="col-md-4">
 
-				<div class="well">
+				<div class="well" style="box-shadow: 0px 1px 8px 1px #dedede;">
 
 				<center>
 				<h3 style="color:#333;">Sign In</h3>
@@ -43,7 +43,17 @@
 
 					<br><br>
 
-					<input type="submit" class="btn btn-primary form-control" value="Login" style="text-decoration: none; color: #000; line-height: .3em;">
+					<input type="submit" class="btn btn-primary form-control" value="Login" style=" background: #fffa00;
+					line-height: .3em;
+    box-shadow: none;
+    border: none;
+    padding: 27px;
+    border-radius: 0 !important;
+    font-size: 14px;
+    text-shadow: none;
+    color: #000;
+    box-sizing: border-box;
+    text-transform: uppercase;">
 
 				<center>
 

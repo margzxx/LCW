@@ -38,7 +38,10 @@ class HomeController extends Controller
 
 		$questions = Question::all();
 
-		return view('dashboard')->with('questions',$questions);
+		$users = User::where('type','VA')->get();
+
+		return view('dashboard')->with('questions',$questions)
+		->with('users',$users);
 
 	}
 

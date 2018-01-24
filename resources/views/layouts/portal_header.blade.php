@@ -96,7 +96,7 @@ use App\Verification;
 				</li>
 				@endif
 
-				@endif
+				
 
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
@@ -111,9 +111,14 @@ use App\Verification;
 							<!-- {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}  -->
 							<b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<!-- <li><a href="{{ url('my-profile') }}">
+
+							<li><a href="{{ url('dashboard') }}">
+								<i class="fa fa-search"></i> Dashboard
+							</a></li>
+
+							<li><a href="{{ url('my-profile') }}">
 								<i class="fa fa-user"></i> View Profile
-							</a></li> -->
+							</a></li>
 
 							<li><a href="{{ url('edit-profile/1') }}">
 								<i class="fa fa-user"></i> Edit Profile
@@ -141,6 +146,8 @@ use App\Verification;
 
 					
 				</ul>
+
+				@endif
 			</div>
 		</div>
 	</div>

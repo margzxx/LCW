@@ -38,7 +38,7 @@ use App\Verification;
 			$preferences_design = Answer::where('question_id',37)->where('user_id',Auth::user()->id)->first()->description;
 
 			$preferences_sales = Answer::where('question_id',38)->where('user_id',Auth::user()->id)->first()->description;
-		}else{
+		}else if(Auth::user()->type == 'Entrepreneur'){
 
 			$skills_editorial = Answer::where('question_id',77)->where('user_id',Auth::user()->id)->first()->description;
 
@@ -86,14 +86,14 @@ use App\Verification;
 					<div class="col-md-5">
 
 						@if(Auth::user()->type == 'VA')
-							<h3>{{ Answer::where('question_id',24)->where('user_id',Auth::user()->id)->first()->description }}</h3>
+							<h3>{{ Answer::where('question_id',3)->where('user_id',Auth::user()->id)->first()->description }}</h3>
 						@else
 							<h3>{{ Answer::where('question_id',58)->where('user_id',Auth::user()->id)->first()->description }}</h3>
 						@endif
 
 						@if(Auth::user()->type == 'VA')
 						<h3>
-							{{ Answer::where('question_id',24)->where('user_id',Auth::user()->id)->first()->description }}</h3>
+							{{ Answer::where('question_id',109)->where('user_id',Auth::user()->id)->first()->description }}</h3>
 							@else
 							<h3>
 								{{ Answer::where('question_id',70)->where('user_id',Auth::user()->id)->first()->description }}
@@ -534,7 +534,7 @@ use App\Verification;
 
 					@if(Auth::user()->type == 'VA')
 					<h4 style="margin-bottom: 0px">Offline Work</h4>
-					{{ Answer::where('question_id',24)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',22)->where('user_id',Auth::user()->id)->first()->description }}
 					@endif
 
 					<br><br>
