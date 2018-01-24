@@ -10,7 +10,7 @@ use App\Verification;
 
 <div class="container" style="padding-top: 50px; padding-bottom: 70px">
 
-	<div class="well">
+	<div class="well" style="box-shadow: 0px 1px 8px 1px #dedede; background: #fff">
 
 		<?php
 		if(Auth::user()->type == 'VA'){

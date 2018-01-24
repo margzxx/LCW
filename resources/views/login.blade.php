@@ -14,7 +14,7 @@
 
 			<div class="col-md-4">
 
-				<div class="well" style="box-shadow: 0px 1px 8px 1px #dedede;">
+				<div class="well" style="box-shadow: 0px 1px 8px 1px #dedede; background: #fff">
 
 				<center>
 				<h3 style="color:#333;">Sign In</h3>

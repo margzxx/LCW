@@ -89,6 +89,8 @@ use App\Bookmark;
 
 		<div class="col-sm-2">
 
+
+
 						@if($user->avatar)
 						<img src="{{ $user->avatar }}" width="100%">
 						@else
@@ -100,7 +102,12 @@ use App\Bookmark;
 
 					<div class="col-md-3">
 
-							<big><b>{{ Answer::where('question_id',3)->where('user_id',$user->id)->first()->description }}</b></big>
+
+
+							<big><b>{{ Answer::where('question_id',3)->where('user_id',$user->id)->first()->description }}</b></big> 
+							<a href="{{ url('bookmark-va/'.$user->id) }}" style="text-decoration: none;">
+							<i class="fa fa-star-o"></i>
+						</a>
 
 							<br>
 
@@ -150,12 +157,12 @@ use App\Bookmark;
 						</div>
 
 						<div class="col-md-4">
-							{{ Answer::where('question_id',19)->where('user_id',$user->id)->first()->description }} 
+							<i class="fa fa-money"></i> {{ Answer::where('question_id',19)->where('user_id',$user->id)->first()->description }} 
 					Desired Salary
 
 						<br>
 
-						{{ Answer::where('question_id',18)->where('user_id',$user->id)->first()->description }}
+						<i class="fa fa-clock-o"></i> {{ Answer::where('question_id',18)->where('user_id',$user->id)->first()->description }}
 						</div>
 
 	</div>

@@ -91,7 +91,7 @@ use App\Description;
 
 		<div class="col-md-6">
 
-			<div class="well">
+			<div class="well" style="box-shadow: 0px 1px 8px 1px #dedede; background: #fff">
 
 				<center><h3 style="color: #30c3e7">Create Profile</h3></center>
 
