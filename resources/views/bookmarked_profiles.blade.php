@@ -4,6 +4,7 @@ use App\Question;
 use App\Answer;
 use App\Choice;
 use App\File;
+use App\User;
 use App\Description;
 use App\Bookmark;
 ?>
@@ -53,45 +54,45 @@ use App\Bookmark;
 	@foreach($users as $user)
 
 	<?php
-	if(Answer::where('user_id',$user->id)->exists()){
+	if(Answer::where('user_id',$user->va_id)->exists()){
 
-		$skills_editorial = Answer::where('question_id',27)->where('user_id',$user->id)->first()->description;
+		$skills_editorial = Answer::where('question_id',27)->where('user_id',$user->va_id)->first()->description;
 
-		$skills_marketing = Answer::where('question_id',28)->where('user_id',$user->id)->first()->description;
+		$skills_marketing = Answer::where('question_id',28)->where('user_id',$user->va_id)->first()->description;
 
-		$skills_admin = Answer::where('question_id',29)->where('user_id',$user->id)->first()->description;
+		$skills_admin = Answer::where('question_id',29)->where('user_id',$user->va_id)->first()->description;
 
-		$skills_finance = Answer::where('question_id',30)->where('user_id',$user->id)->first()->description;
+		$skills_finance = Answer::where('question_id',30)->where('user_id',$user->va_id)->first()->description;
 
-		$skills_design = Answer::where('question_id',31)->where('user_id',$user->id)->first()->description;
+		$skills_design = Answer::where('question_id',31)->where('user_id',$user->va_id)->first()->description;
 
-		$skills_sales = Answer::where('question_id',32)->where('user_id',$user->id)->first()->description;
+		$skills_sales = Answer::where('question_id',32)->where('user_id',$user->va_id)->first()->description;
 
-		$preferences_editorial = Answer::where('question_id',33)->where('user_id',$user->id)->first()->description;
+		$preferences_editorial = Answer::where('question_id',33)->where('user_id',$user->va_id)->first()->description;
 
-		$preferences_marketing = Answer::where('question_id',34)->where('user_id',$user->id)->first()->description;
+		$preferences_marketing = Answer::where('question_id',34)->where('user_id',$user->va_id)->first()->description;
 
-		$preferences_admin = Answer::where('question_id',35)->where('user_id',$user->id)->first()->description;
+		$preferences_admin = Answer::where('question_id',35)->where('user_id',$user->va_id)->first()->description;
 
-		$preferences_finance = Answer::where('question_id',36)->where('user_id',$user->id)->first()->description;
+		$preferences_finance = Answer::where('question_id',36)->where('user_id',$user->va_id)->first()->description;
 
-		$preferences_design = Answer::where('question_id',37)->where('user_id',$user->id)->first()->description;
+		$preferences_design = Answer::where('question_id',37)->where('user_id',$user->va_id)->first()->description;
 
-		$preferences_sales = Answer::where('question_id',38)->where('user_id',$user->id)->first()->description;
+		$preferences_sales = Answer::where('question_id',38)->where('user_id',$user->va_id)->first()->description;
 
-		$p_wealth = Answer::where('question_id',46)->where('user_id',$user->id)->first()->description;
+		$p_wealth = Answer::where('question_id',46)->where('user_id',$user->va_id)->first()->description;
 
-		$p_success = Answer::where('question_id',47)->where('user_id',$user->id)->first()->description;
+		$p_success = Answer::where('question_id',47)->where('user_id',$user->va_id)->first()->description;
 
-		$p_freedom = Answer::where('question_id',48)->where('user_id',$user->id)->first()->description;
+		$p_freedom = Answer::where('question_id',48)->where('user_id',$user->va_id)->first()->description;
 
-		$p_stability = Answer::where('question_id',49)->where('user_id',$user->id)->first()->description;
+		$p_stability = Answer::where('question_id',49)->where('user_id',$user->va_id)->first()->description;
 
 	}
 	
 	?>
 
-	@if(Answer::where('user_id',$user->id)->exists())
+	@if(Answer::where('user_id',$user->va_id)->exists())
 
 	<div class="row">
 
@@ -99,8 +100,8 @@ use App\Bookmark;
 
 
 
-						@if($user->avatar)
-						<img src="{{ $user->avatar }}" width="100%">
+						@if(User::find($user->va_id)->avatar)
+						<img src="{{ User::find($user->va_id)->avatar }}" width="100%">
 						@else
 						<img src="{{ url('assets/img/logo2.png') }}" width="100%">
 
@@ -112,13 +113,13 @@ use App\Bookmark;
 
 
 
-							<big><b>{{ Answer::where('question_id',3)->where('user_id',$user->id)->first()->description }}</b></big> 
-							@if(Bookmark::where('en_id',Auth::user()->id)->where('va_id',$user->id)->exists())
+							<big><b>{{ Answer::where('question_id',3)->where('user_id',$user->va_id)->first()->description }}</b></big> 
+							@if(Bookmark::where('en_id',Auth::user()->id)->where('va_id',$user->va_id)->exists())
 							<a href="{{ url('unbookmark-va/'.$user->va_id) }}" style="text-decoration: none;">
 							<i class="fa fa-star"></i>
 						</a>
 							@else
-							<a href="{{ url('bookmark-va/'.$user->id) }}" style="text-decoration: none;">
+							<a href="{{ url('bookmark-va/'.$user->va_id) }}" style="text-decoration: none;">
 							<i class="fa fa-star-o"></i>
 						</a>
 						@endif
@@ -126,7 +127,7 @@ use App\Bookmark;
 							<br>
 
 						<big><b>
-							{{ Answer::where('question_id',109)->where('user_id',$user->id)->first()->description }}</b></big>
+							{{ Answer::where('question_id',109)->where('user_id',$user->va_id)->first()->description }}</b></big>
 
 							<br>
 
@@ -157,27 +158,27 @@ use App\Bookmark;
 							<br>
 
 							<b style="margin-bottom: 0px">Online Work</b>
-					{{ Answer::where('question_id',23)->where('user_id',$user->id)->first()->description }}
+					{{ Answer::where('question_id',23)->where('user_id',$user->va_id)->first()->description }}
 
 					<br>
 
 					<b style="margin-bottom: 0px">Offline Work</b>
-					{{ Answer::where('question_id',22)->where('user_id',$user->id)->first()->description }}
+					{{ Answer::where('question_id',22)->where('user_id',$user->va_id)->first()->description }}
 							
 						</div>
 
 						<div class="col-md-4">
-							{{ Answer::where('question_id',14)->where('user_id',$user->id)->first()->description }}
-							<a href="{{ url('view-profile/'.$user->id) }}">view profile</a>
+							{{ Answer::where('question_id',14)->where('user_id',$user->va_id)->first()->description }}
+							<a href="{{ url('view-profile/'.$user->va_id) }}">view profile</a>
 						</div>
 
 						<div class="col-md-4">
-							<i class="fa fa-money" style="color: #30c3e7"></i> {{ Answer::where('question_id',19)->where('user_id',$user->id)->first()->description }} 
+							<i class="fa fa-money" style="color: #30c3e7"></i> {{ Answer::where('question_id',19)->where('user_id',$user->va_id)->first()->description }} 
 					Desired Salary
 
 						<br>
 
-						<i class="fa fa-clock-o" style="color: #30c3e7" style="margin-right: 30px"></i> {{ Answer::where('question_id',18)->where('user_id',$user->id)->first()->description }}
+						<i class="fa fa-clock-o" style="color: #30c3e7" style="margin-right: 30px"></i> {{ Answer::where('question_id',18)->where('user_id',$user->va_id)->first()->description }}
 
 						<br>
 

@@ -117,11 +117,11 @@ use App\Verification;
 							</a></li>
 
 							<li><a href="{{ url('my-profile') }}">
-								<i class="fa fa-user"></i> View Profile
+								View Profile
 							</a></li>
 
 							<li><a href="{{ url('edit-profile/1') }}">
-								<i class="fa fa-user"></i> Edit Profile
+								Edit Profile
 							</a></li>
 
 							<!-- <li><a href="{{ url('profile-settings') }}">

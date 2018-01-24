@@ -18,6 +18,8 @@ Route::get('edit-profile/{id}','HomeController@showEditProfile');
 Route::post('edit-profile','HomeController@doEditProfile');
 Route::get('change-avatar','HomeController@showChangeAvatar');
 
+Route::get('view-profile/{id}','HomeController@showViewProfile');
+
 Route::get('change-password','HomeController@showChangePassword');
 Route::post('change-password','HomeController@doChangePassword');
 
@@ -82,5 +84,7 @@ Route::get('approve-user-survey/{id}','HomeController@doApproveUserSurvey');
 Route::get('disapprove-user-survey/{id}','HomeController@doDisapproveUserSurvey');
 
 Route::get('bookmark-va/{id}','HomeController@doBookmarkVA');
+Route::get('unbookmark-va/{id}','HomeController@doUnbookmarkVA');
+Route::get('bookmarked-profiles','HomeController@showBookmarkedProfiles');
 
 Route::get('debug','CoreController@doDebug');

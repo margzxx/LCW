@@ -46,6 +46,14 @@ class HomeController extends Controller
 
 	}
 
+	public function showBookmarkedProfiles(){
+
+		$users = Bookmark::where('en_id',Auth::user()->id)->get();
+
+		return view('bookmarked_profiles')->with('users',$users);
+
+	}
+
 	public function doBookmarkVA(Request $request,$id){
 
 		$bookmark = new Bookmark;
@@ -56,6 +64,16 @@ class HomeController extends Controller
 		$bookmark->save();
 
 		$request->session()->flash('success','Great! VA saved to your bookmarks');
+
+		return back();
+
+	}
+
+	public function doUnbookmarkVA(Request $request,$id){
+
+		DB::table('bookmarks')->where('en_id',Auth::user()->id)->where('va_id',$id)->delete();
+
+		$request->session()->flash('success','Great! VA unbooked.');
 
 		return back();
 
@@ -210,6 +228,17 @@ class HomeController extends Controller
 		$answers = Answer::where('user_id',Auth::user()->id)->get();
 
 		return view('my_profile')->with('answers',$answers);
+
+	}
+
+	public function showViewProfile($id){
+
+		$user = User::find($id);
+
+		$answers = Answer::where('user_id',$id)->get();
+
+		return view('view_profile')->with('answers',$answers)
+		->with('user',$user);
 
 	}
 

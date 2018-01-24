@@ -4,6 +4,7 @@ use App\Question;
 use App\Answer;
 use App\Choice;
 use App\File;
+use App\Bookmark;
 use App\Description;
 use App\Verification;
 ?>
@@ -13,56 +14,56 @@ use App\Verification;
 	<div class="well" style="box-shadow: 0px 1px 8px 1px #dedede; background: #fff">
 
 		<?php
-		if(Auth::user()->type == 'VA'){
+		if($user->type == 'VA'){
 
-			$skills_editorial = Answer::where('question_id',27)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_editorial = Answer::where('question_id',27)->where('user_id',$user->id)->first()->description;
 
-			$skills_marketing = Answer::where('question_id',28)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_marketing = Answer::where('question_id',28)->where('user_id',$user->id)->first()->description;
 
-			$skills_admin = Answer::where('question_id',29)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_admin = Answer::where('question_id',29)->where('user_id',$user->id)->first()->description;
 
-			$skills_finance = Answer::where('question_id',30)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_finance = Answer::where('question_id',30)->where('user_id',$user->id)->first()->description;
 
-			$skills_design = Answer::where('question_id',31)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_design = Answer::where('question_id',31)->where('user_id',$user->id)->first()->description;
 
-			$skills_sales = Answer::where('question_id',32)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_sales = Answer::where('question_id',32)->where('user_id',$user->id)->first()->description;
 
-			$preferences_editorial = Answer::where('question_id',33)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_editorial = Answer::where('question_id',33)->where('user_id',$user->id)->first()->description;
 
-			$preferences_marketing = Answer::where('question_id',34)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_marketing = Answer::where('question_id',34)->where('user_id',$user->id)->first()->description;
 
-			$preferences_admin = Answer::where('question_id',35)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_admin = Answer::where('question_id',35)->where('user_id',$user->id)->first()->description;
 
-			$preferences_finance = Answer::where('question_id',36)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_finance = Answer::where('question_id',36)->where('user_id',$user->id)->first()->description;
 
-			$preferences_design = Answer::where('question_id',37)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_design = Answer::where('question_id',37)->where('user_id',$user->id)->first()->description;
 
-			$preferences_sales = Answer::where('question_id',38)->where('user_id',Auth::user()->id)->first()->description;
-		}else if(Auth::user()->type == 'Entrepreneur'){
+			$preferences_sales = Answer::where('question_id',38)->where('user_id',$user->id)->first()->description;
+		}else if($user->type == 'Entrepreneur'){
 
-			$skills_editorial = Answer::where('question_id',77)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_editorial = Answer::where('question_id',77)->where('user_id',$user->id)->first()->description;
 
-			$skills_marketing = Answer::where('question_id',78)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_marketing = Answer::where('question_id',78)->where('user_id',$user->id)->first()->description;
 
-			$skills_admin = Answer::where('question_id',79)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_admin = Answer::where('question_id',79)->where('user_id',$user->id)->first()->description;
 
-			$skills_finance = Answer::where('question_id',80)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_finance = Answer::where('question_id',80)->where('user_id',$user->id)->first()->description;
 
-			$skills_design = Answer::where('question_id',81)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_design = Answer::where('question_id',81)->where('user_id',$user->id)->first()->description;
 
-			$skills_sales = Answer::where('question_id',82)->where('user_id',Auth::user()->id)->first()->description;
+			$skills_sales = Answer::where('question_id',82)->where('user_id',$user->id)->first()->description;
 
-			$preferences_editorial = Answer::where('question_id',83)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_editorial = Answer::where('question_id',83)->where('user_id',$user->id)->first()->description;
 
-			$preferences_marketing = Answer::where('question_id',85)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_marketing = Answer::where('question_id',85)->where('user_id',$user->id)->first()->description;
 
-			$preferences_admin = Answer::where('question_id',86)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_admin = Answer::where('question_id',86)->where('user_id',$user->id)->first()->description;
 
-			$preferences_finance = Answer::where('question_id',87)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_finance = Answer::where('question_id',87)->where('user_id',$user->id)->first()->description;
 
-			$preferences_design = Answer::where('question_id',88)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_design = Answer::where('question_id',88)->where('user_id',$user->id)->first()->description;
 
-			$preferences_sales = Answer::where('question_id',88)->where('user_id',Auth::user()->id)->first()->description;
+			$preferences_sales = Answer::where('question_id',88)->where('user_id',$user->id)->first()->description;
 		}
 		?>
 
@@ -74,8 +75,8 @@ use App\Verification;
 
 					<div class="col-sm-3">
 
-						@if(Auth::user()->avatar)
-						<img src="{{ Auth::user()->avatar }}" width="100%">
+						@if($user->avatar)
+						<img src="{{ url($user->avatar) }}" width="100%">
 						@else
 						<img src="{{ url('assets/img/logo2.png') }}" width="100%">
 
@@ -85,18 +86,27 @@ use App\Verification;
 
 					<div class="col-md-5">
 
-						@if(Auth::user()->type == 'VA')
-							<h3>{{ Answer::where('question_id',3)->where('user_id',Auth::user()->id)->first()->description }}</h3>
+						@if($user->type == 'VA')
+							<h3>{{ Answer::where('question_id',3)->where('user_id',$user->id)->first()->description }} @if(Bookmark::where('en_id',Auth::user()->id)->where('va_id',$user->id)->exists())
+							<a href="{{ url('unbookmark-va/'.$user->id) }}" style="text-decoration: none;">
+							<i class="fa fa-star"></i>
+						</a></h3> 
+							
+							@else
+							<a href="{{ url('bookmark-va/'.$user->id) }}" style="text-decoration: none;">
+							<i class="fa fa-star-o"></i>
+						</a>
+						@endif
 						@else
-							<h3>{{ Answer::where('question_id',58)->where('user_id',Auth::user()->id)->first()->description }}</h3>
+							<h3>{{ Answer::where('question_id',58)->where('user_id',$user->id)->first()->description }}</h3>
 						@endif
 
-						@if(Auth::user()->type == 'VA')
+						@if($user->type == 'VA')
 						<h3>
-							{{ Answer::where('question_id',109)->where('user_id',Auth::user()->id)->first()->description }}</h3>
+							{{ Answer::where('question_id',109)->where('user_id',$user->id)->first()->description }}</h3>
 							@else
 							<h3>
-								{{ Answer::where('question_id',70)->where('user_id',Auth::user()->id)->first()->description }}
+								{{ Answer::where('question_id',70)->where('user_id',$user->id)->first()->description }}
 							</h3>
 							@endif
 
@@ -127,7 +137,7 @@ use App\Verification;
 						</div>
 
 						<div class="col-md-4">
-							<a href="{{ url(Auth::user()->type) }}" download>
+							<a href="{{ url($user->type) }}" download>
 							<input type="button" class="btn btn-primary" value="VIEW CV / PORTFOLIO" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7;">
 							</a>
 
@@ -138,10 +148,10 @@ use App\Verification;
 					<hr>
 
 					<h3>About</h3>
-					@if(Auth::user()->type == 'VA')
-					{{ Answer::where('question_id',14)->where('user_id',Auth::user()->id)->first()->description }}
+					@if($user->type == 'VA')
+					{{ Answer::where('question_id',14)->where('user_id',$user->id)->first()->description }}
 					@else
-					{{ Answer::where('question_id',65)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',65)->where('user_id',$user->id)->first()->description }}
 					@endif
 
 					<hr>
@@ -453,23 +463,23 @@ use App\Verification;
 					<div class="row">
 
 						<div class="col-md-6">
-							@if(Auth::user()->type == 'VA')
+							@if($user->type == 'VA')
 							<h4>Essential Tools</h4>
-							{{ Answer::where('question_id',40)->where('user_id',Auth::user()->id)->first()->description }}
+							{{ Answer::where('question_id',40)->where('user_id',$user->id)->first()->description }}
 							@else
 							<h4>Tools For The Role</h4>
-							{{ Answer::where('question_id',91)->where('user_id',Auth::user()->id)->first()->description }}
+							{{ Answer::where('question_id',91)->where('user_id',$user->id)->first()->description }}
 
 							@endif
 						</div>
 
 						<div class="col-md-6">
-							@if(Auth::user()->type == 'VA')
+							@if($user->type == 'VA')
 							<h4>Strengths</h4>
-							{{ Answer::where('question_id',41)->where('user_id',Auth::user()->id)->first()->description }}
+							{{ Answer::where('question_id',41)->where('user_id',$user->id)->first()->description }}
 							@else
 							<h4>Strengths For The Role</h4>
-							{{ Answer::where('question_id',92)->where('user_id',Auth::user()->id)->first()->description }}
+							{{ Answer::where('question_id',92)->where('user_id',$user->id)->first()->description }}
 
 							@endif
 						</div>
@@ -481,13 +491,13 @@ use App\Verification;
 
 					<div class="row">
 
-						@if(Auth::user()->type == 'VA')
+						@if($user->type == 'VA')
 						<div class="col-md-6">
 
 							<h4>Highest Position Held</h4>
 
 							<h5>
-								{{ Answer::where('question_id',24)->where('user_id',Auth::user()->id)->first()->description }}
+								{{ Answer::where('question_id',24)->where('user_id',$user->id)->first()->description }}
 							</h5>
 
 						</div>
@@ -496,7 +506,7 @@ use App\Verification;
 							<h4>Education</h4>
 
 							<h5>
-								{{ Answer::where('question_id',20)->where('user_id',Auth::user()->id)->first()->description }}
+								{{ Answer::where('question_id',20)->where('user_id',$user->id)->first()->description }}
 							</h5>
 
 
@@ -505,10 +515,10 @@ use App\Verification;
 						<div class="col-md-12">
 							<h4>Company</h4>
 
-							{{ Answer::where('question_id',65)->where('user_id',Auth::user()->id)->first()->description }}
+							{{ Answer::where('question_id',65)->where('user_id',$user->id)->first()->description }}
 
 							<br><br>
-							<a href="{{ Answer::where('question_id',75)->where('user_id',Auth::user()->id)->first()->description }}">{{ Answer::where('question_id',75)->where('user_id',Auth::user()->id)->first()->description }}</a>
+							<a href="{{ Answer::where('question_id',75)->where('user_id',$user->id)->first()->description }}">{{ Answer::where('question_id',75)->where('user_id',$user->id)->first()->description }}</a>
 						</div>
 						@endif
 
@@ -517,64 +527,64 @@ use App\Verification;
 				</div>
 
 				<div class="col-md-3">
-					@if(Auth::user()->type == 'VA')
-					<h4 style="margin-bottom: 0px">{{ Answer::where('question_id',19)->where('user_id',Auth::user()->id)->first()->description }}</h4>
+					@if($user->type == 'VA')
+					<h4 style="margin-bottom: 0px">{{ Answer::where('question_id',19)->where('user_id',$user->id)->first()->description }}</h4>
 					Desired Salary Per Month
 					@else
-					<h4 style="margin-bottom: 0px">{{ Answer::where('question_id',69)->where('user_id',Auth::user()->id)->first()->description }}</h4>
+					<h4 style="margin-bottom: 0px">{{ Answer::where('question_id',69)->where('user_id',$user->id)->first()->description }}</h4>
 					Maximum Budget Per Month
 					@endif
 
 					<br><br>
 					<input type="button" class="btn btn-primary" value="CONTACT" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7;">
 					<br><br>
-					Contacted last {{ date('m/d/Y',strtotime(Verification::where('user_id',Auth::user()->id)->first()->created_at)) }}
+					Contacted last {{ date('m/d/Y',strtotime(Verification::where('user_id',$user->id)->first()->created_at)) }}
 					<br>
 
-					@if(Auth::user()->type == 'Entrepreneur')
+					@if($user->type == 'Entrepreneur')
 					<h4 style="margin-bottom: 0px">Employed</h4>
-					{{ Answer::where('question_id',72)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',72)->where('user_id',$user->id)->first()->description }}
 					@endif
 
-					@if(Auth::user()->type == 'Entrepreneur')
+					@if($user->type == 'Entrepreneur')
 					<h4 style="margin-bottom: 0px">Business</h4>
-					{{ Answer::where('question_id',73)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',73)->where('user_id',$user->id)->first()->description }}
 					@endif
 
-					@if(Auth::user()->type == 'VA')
+					@if($user->type == 'VA')
 					<h4 style="margin-bottom: 0px">Online Work</h4>
-					{{ Answer::where('question_id',23)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',23)->where('user_id',$user->id)->first()->description }}
 					<br>
 					@endif
 
 					
 
-					@if(Auth::user()->type == 'VA')
+					@if($user->type == 'VA')
 					<h4 style="margin-bottom: 0px">Offline Work</h4>
-					{{ Answer::where('question_id',22)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',22)->where('user_id',$user->id)->first()->description }}
 					<br><br>
 					@endif
 
 					
 
 					<h3>Availability</h3>
-					@if(Auth::user()->type == 'VA')
+					@if($user->type == 'VA')
 					<h4 style="margin-bottom: 0px">Available</h4>
-					{{ Answer::where('question_id',18)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',18)->where('user_id',$user->id)->first()->description }}
 					@endif
 
 					<h4 style="margin-bottom: 0px">Voice Calls</h4>
-					@if(Auth::user()->type == 'VA')
-					{{ Answer::where('question_id',39)->where('user_id',Auth::user()->id)->first()->description }}
+					@if($user->type == 'VA')
+					{{ Answer::where('question_id',39)->where('user_id',$user->id)->first()->description }}
 					@else
-					{{ Answer::where('question_id',90)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',90)->where('user_id',$user->id)->first()->description }}
 					@endif
 
 					<br><br>
 
-					@if(Auth::user()->type == 'VA')
+					@if($user->type == 'VA')
 					<h4 style="margin-bottom: 0px">English Proficiency</h4>
-					{{ Answer::where('question_id',108)->where('user_id',Auth::user()->id)->first()->description }}
+					{{ Answer::where('question_id',108)->where('user_id',$user->id)->first()->description }}
 					@else
 					<h4 style="margin-bottom: 0px">Training Preference</h4>
 					Some - I can do training
