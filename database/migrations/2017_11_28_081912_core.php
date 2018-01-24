@@ -136,6 +136,16 @@ class Core extends Migration
 
         });
 
+        Schema::create('bookmarks',function(Blueprint $table){
+
+            $table->increments('id');
+            $table->integer('en_id');
+            $table->integer('va_id');
+            $table->boolean('status');
+            $table->timestamps();
+
+        });
+
     }
 
     /**
@@ -150,12 +160,10 @@ class Core extends Migration
         Schema::drop('choices');
         Schema::drop('answers');
         Schema::drop('files');
-        Schema::drop('experiences');
         Schema::drop('skills');
         Schema::drop('descriptions');
-        Schema::drop('preferences');
-        Schema::drop('goals');
         Schema::drop('verifications');
         Schema::drop('matches');
+        Schema::drop('bookmarks');
     }
 }
