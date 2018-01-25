@@ -785,7 +785,7 @@ class HomeController extends Controller
 
 		Auth::loginUsingId($id);
 
-		return redirect('my-profile');
+		return redirect('take-survey/1');
 
 	}
 
