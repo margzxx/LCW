@@ -91,6 +91,12 @@ class CoreController extends Controller
 
 	}
 
+	public function showForgotPassword(){
+
+		return view('forgot_password');
+
+	}
+
 	public function doLogin(Request $request){
 
 		$rules = [

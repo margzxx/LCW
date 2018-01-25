@@ -22,6 +22,7 @@ Route::get('view-profile/{id}','HomeController@showViewProfile');
 
 Route::get('change-password','HomeController@showChangePassword');
 Route::post('change-password','HomeController@doChangePassword');
+Route::get('forgot-password','CoreController@showForgotPassword');
 
 Route::get('applicants','HomeController@showApplicants');
 Route::post('filter-applicants','HomeController@doFilterApplicants');
