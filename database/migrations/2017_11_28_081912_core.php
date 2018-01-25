@@ -67,45 +67,6 @@ class Core extends Migration
 
         });
 
-        Schema::create('experiences',function(Blueprint $table){
-
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('type');
-            $table->longtext('description');
-            $table->timestamps();
-
-        });
-
-        Schema::create('skills',function(Blueprint $table){
-
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('type');
-            $table->longtext('description');
-            $table->timestamps();
-
-        });
-
-        Schema::create('preferences',function(Blueprint $table){
-
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('type');
-            $table->longtext('description');
-            $table->timestamps();
-
-        });
-
-        Schema::create('goals',function(Blueprint $table){
-
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('type');
-            $table->longtext('description');
-            $table->timestamps();
-
-        });
 
         Schema::create('descriptions',function(Blueprint $table){
 
@@ -160,7 +121,6 @@ class Core extends Migration
         Schema::drop('choices');
         Schema::drop('answers');
         Schema::drop('files');
-        Schema::drop('skills');
         Schema::drop('descriptions');
         Schema::drop('verifications');
         Schema::drop('matches');
