@@ -17,7 +17,7 @@
 				<div class="well" style="box-shadow: 0px 1px 8px 1px #dedede; background: #fff">
 
 				<center>
-				<h3 style="color:#333;">Sign In</h3>
+				<h3 style="color:#333;">Sign In t</h3>
 				</center>
 
 				@if($errors->any() || Session::get('error'))

@@ -114,7 +114,7 @@ use App\Bookmark;
 
 							<big><b>{{ Answer::where('question_id',3)->where('user_id',$user->id)->first()->description }}</b></big> 
 							@if(Bookmark::where('en_id',Auth::user()->id)->where('va_id',$user->id)->exists())
-							<a href="{{ url('unbookmark-va/'.$user->va_id) }}" style="text-decoration: none;">
+							<a href="{{ url('unbookmark-va/'.$user->id) }}" style="text-decoration: none;">
 							<i class="fa fa-star"></i>
 						</a>
 							@else
