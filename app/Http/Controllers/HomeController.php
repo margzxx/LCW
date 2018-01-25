@@ -63,7 +63,7 @@ class HomeController extends Controller
 		$bookmark->status = 1;
 		$bookmark->save();
 
-		$request->session()->flash('success','Great! VA saved to your bookmarks');
+		$request->session()->flash('success','Great! VA saved to your bookmarks.');
 
 		return back();
 

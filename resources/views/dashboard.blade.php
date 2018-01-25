@@ -32,6 +32,12 @@ use App\Bookmark;
 
 	</div>
 
+	@if(Session::get('success'))
+	<div class="alert alert-success" role="alert">
+	  {{ Session::get('success') }}
+	</div>
+	@endif
+
 	<div class="row">
 
 		<form action="{{ url('filter-va') }}" method="post">
