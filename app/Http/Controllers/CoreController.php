@@ -69,7 +69,7 @@ class CoreController extends Controller
 			$user->status = 1;
 			$user->save();
 
-			Mail::send('emails.success_register',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id],function($message) use($email){
+			Mail::send('emails.success_register',['name'=>$user->firstname.' '.$user->lastname,'email'=>$user->email,'user_id'=>$user->id],function($message) use($email){
 
                         $message->to($email,'Connected Women')->subject('Please activate your account');
 
