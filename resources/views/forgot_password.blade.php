@@ -33,7 +33,7 @@
 
 					<br><br>
 
-					<input type="submit" class="btn btn-primary form-control" value="Login" style=" background: #fffa00;
+					<input type="submit" class="btn btn-primary form-control" value="Submit" style=" background: #fffa00;
 					line-height: .3em;
     box-shadow: none;
     border: none;

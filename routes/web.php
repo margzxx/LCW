@@ -24,6 +24,8 @@ Route::get('change-password','HomeController@showChangePassword');
 Route::post('change-password','HomeController@doChangePassword');
 Route::get('forgot-password','CoreController@showForgotPassword');
 Route::post('forgot-password','CoreController@doForgotPassword');
+Route::get('reset-password/{id}','CoreController@showResetPassword');
+Route::post('reset-password','CoreController@doResetPassword');
 
 Route::get('applicants','HomeController@showApplicants');
 Route::post('filter-applicants','HomeController@doFilterApplicants');

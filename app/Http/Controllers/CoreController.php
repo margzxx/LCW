@@ -97,7 +97,45 @@ class CoreController extends Controller
 
                     });
 
-		return view('');
+		return view('success_forgot_password');
+
+	}
+
+	public function showResetPassword($id){
+
+		$user = User::find($id);
+
+		return view('reset_password')->with('user',$user);
+
+	}
+
+	public function doResetPassword(Request $request){
+
+		$user = User::find($request->input('user_id'));
+
+		if(password_verify($request->input('old_password'),$user->password)){
+
+			$rules = [
+				'new_password'=>'required|same:confirm_new_password',
+			];
+
+
+
+			DB::table('users')->where('id',$user->id)->update([
+				'password'=>bcrypt($request->input('new_password')),
+			]);
+
+			$request->session()->flash('success','Password updated.');
+
+			return back();
+
+		}else{
+
+			$request->session()->flash('error','Old password incorrect.');
+
+			return back();
+
+		}
 
 	}
 
