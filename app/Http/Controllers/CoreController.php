@@ -85,6 +85,22 @@ class CoreController extends Controller
 
 	}
 
+	public function doForgotPassword(Request $request){
+
+		$user = User::where('email',$request->input('email'))->first();
+
+		$email = $user->email;
+
+		Mail::send('emails.forgot_password',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id],function($message) use($email){
+
+                        $message->to($email,'Connected Women')->subject('Forgot password');
+
+                    });
+
+		return view('');
+
+	}
+
 	public function showLogin(){
 
 		return view('login');
