@@ -45,19 +45,6 @@
     box-sizing: border-box;
     text-transform: uppercase;">
 
-				<center>
-
-				<br><br>
-
-					<a href="#" style="color:#333;">
-					Have an account already? Log In
-					</a>
-
-					<br><br><br>
-				
-					Don't have an account yet? <a href="{{ url('register') }}">Sign Up</a>
-				</center>
-
 			</div>
 
 			</div>

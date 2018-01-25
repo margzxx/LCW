@@ -57,19 +57,6 @@
     box-sizing: border-box;
     text-transform: uppercase;">
 
-				<center>
-
-				<br><br>
-
-					<a href="{{ url('forgot-password') }}" style="color:#333;">
-					Forgot your password?
-					</a>
-
-					<br><br><br>
-				
-					Don't have an account yet? <a href="{{ url('register') }}">Sign Up</a>
-				</center>
-
 			</div>
 
 			</div>

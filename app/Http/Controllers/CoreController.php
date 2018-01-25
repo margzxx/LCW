@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Validator;
 use Mail;
+use DB;
 
 use App\User;
 use App\Answer;
