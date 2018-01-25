@@ -66,7 +66,7 @@ class CoreController extends Controller
 			$user->role = 'Client';
 			$user->marital_status = 'N/A';
 			$user->educational_attainment = 'N/A';
-			$user->status = 1;
+			$user->status = 0;
 			$user->save();
 
 			$email = $user->email;
