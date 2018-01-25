@@ -1465,6 +1465,10 @@ class HomeController extends Controller
 
                     });
 
+		$request->session()->flash('success','Great! Your message has been sent to her email.');
+
+		return back();
+
 	}
 
 }
