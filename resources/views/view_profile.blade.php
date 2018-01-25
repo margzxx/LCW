@@ -138,7 +138,7 @@ use App\Verification;
 						</div>
 
 						<div class="col-md-4">
-							<a href="{{ url($user->type) }}">
+							<a href="{{ url($user->resume) }}">
 							<input type="button" class="btn btn-primary" value="VIEW CV / PORTFOLIO" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7;">
 							</a>
 

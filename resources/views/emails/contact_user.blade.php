@@ -5,15 +5,12 @@
 </head>
 <body>
 
-	<h3>Welcome to Connected Women</h3>
+	<h3>An entrepreneur wants to keep in touch with you</h3>
 
-	Hi <b>{{ $name }}</b>,
-	<br>
+	From: <b>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</b>
+	Email: {{ Auth::user()->email }}
+	<br><br>
 	{{ $description }}
-
-	<br>
-
-	Send an email to: {{ Auth::user()->email }}
 
 	<br><br>
 	If you have any problems, please contact us at cwjobs@jobs.connectedwomen.co
