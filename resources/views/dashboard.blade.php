@@ -34,7 +34,7 @@ use App\Bookmark;
 
 	@if(Session::get('success'))
 	<div class="alert alert-success" role="alert">
-	  {{ Session::get('success') }}
+	  <i class="fa fa-star"></i> {{ Session::get('success') }}
 	</div>
 	@endif
 

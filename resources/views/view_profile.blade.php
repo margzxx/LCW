@@ -12,6 +12,12 @@ use App\Verification;
 
 <div class="container" style="padding-top: 50px; padding-bottom: 70px">
 
+	@if(Session::get('success'))
+	<div class="alert alert-success" role="alert">
+	  <i class="fa fa-envelope"></i> {{ Session::get('success') }}
+	</div>
+	@endif
+
 	<div class="well" style="box-shadow: 0px 1px 8px 1px #dedede; background: #fff">
 
 		<?php

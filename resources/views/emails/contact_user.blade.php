@@ -8,6 +8,7 @@
 	<h3>An entrepreneur wants to keep in touch with you</h3>
 
 	From: <b>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</b>
+	<br>
 	Email: {{ Auth::user()->email }}
 	<br><br>
 	{{ $description }}
