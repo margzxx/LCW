@@ -148,4 +148,13 @@ class CoreController extends Controller
 
 	}
 
+	public function doDebugEmail(){
+
+		Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+		{
+			$message->to('edeesonopinav4@gmail.com');
+		});
+
+	}
+
 }

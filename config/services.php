@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('mg.connectedwomen.co'),
+        'secret' => env('6091ce3518559affb44b1f4beeb81c12'),
     ],
 
     'ses' => [
