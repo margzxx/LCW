@@ -59,7 +59,7 @@
 
 				<br><br>
 
-					<a href="#" style="color:#333;">
+					<a href="{{ url('forgot-password') }}" style="color:#333;">
 					Forgot your password?
 					</a>
 
