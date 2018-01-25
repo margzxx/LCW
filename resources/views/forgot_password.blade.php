@@ -31,7 +31,7 @@
 				<label style="color:#333;">Username or Email</label>
 				<input type="email" name="email" class="form-control" placeholder="Email" required>
 
-					<br><br>
+					<br>
 
 					<input type="submit" class="btn btn-primary form-control" value="Submit" style=" background: #fffa00;
 					line-height: .3em;
