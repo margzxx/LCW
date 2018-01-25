@@ -7,7 +7,7 @@
 
 	<h3>Welcome to Connected Women</h3>
 
-	Hi <b>{{ $name }}</b>,
+	Hi <b>{{ $name }}</b>,s
 	<br>
 	Thank you for signing up with Connected Women - Virtual Assistants For Entrepreneurs!<br>
 	To activate your account , please click the link below to confirm your email address:<br><br>
