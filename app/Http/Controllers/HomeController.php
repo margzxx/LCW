@@ -777,6 +777,18 @@ class HomeController extends Controller
 
 	}
 
+	public function doRegisterActivateUser($id){
+
+		DB::table('users')->where('id',$id)->update([
+			'status'=>1,
+		]);
+
+		Auth::loginUsingId($id);
+
+		return redirect('my-profile');
+
+	}
+
 	public function doActivateUser(Request $request, $id){
 
 		DB::table('users')->where('id',$id)->update([

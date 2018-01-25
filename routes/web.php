@@ -69,6 +69,7 @@ Route::post('filter-manage-users','HomeController@doFilterManageUsers');
 Route::get('manage-users','HomeController@showManageUsers');
 Route::get('activate-user/{id}','HomeController@doActivateUser');
 Route::get('deactivate-user/{id}','HomeController@doDeactivateUser');
+Route::get('register-activate-user/{id}','HomeController@doRegisterActivateUser');
 
 Route::get('survey-report','HomeController@showSurveyReport');
 
