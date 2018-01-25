@@ -69,6 +69,12 @@ class CoreController extends Controller
 			$user->status = 1;
 			$user->save();
 
+			Mail::send('emails.success_register',['email'=>$email,'user_id'=>$user->id],function($message) use($email){
+
+                        $message->to($email,'Connected Women')->subject('Please activate your account');
+
+                    });
+
 			$request->session()->flash('success','Great you are now registered to our system. Assuming na naverify na din sa email nila yung verification link');
 
 			return view('success_register');
