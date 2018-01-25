@@ -127,7 +127,7 @@ use App\Verification;
 						</div>
 
 						<div class="col-md-4">
-							<a href="{{ url(File::where('type','Resume')->where('user_id',$user->id)) }}">
+							<a href="{{ url(File::where('type','Resume')->where('user_id',Auth::user()->id)->first()->document) }}">
 							<input type="button" class="btn btn-primary" value="VIEW CV / PORTFOLIO" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7;">
 							</a>
 
