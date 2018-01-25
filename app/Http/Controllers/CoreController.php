@@ -23,7 +23,7 @@ use App\Area;
 
 class CoreController extends Controller
 {
-    
+
 	public function showRegister(){
 
 		$countries = Country::all();
@@ -74,10 +74,10 @@ class CoreController extends Controller
 
 			Mail::send('emails.success_register',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id],function($message) use($email){
 
-                        $message->to($email,'Connected Women')->subject('Please activate your account');
-                        $message->from('team@connectedwomen.co');
+				$message->to($email,'Connected Women')->subject('Please activate your account');
+				$message->from('team@connectedwomen.co');
 
-                    });
+			});
 
 			$request->session()->flash('success','Great you are now registered to our system. Assuming na naverify na din sa email nila yung verification link');
 
@@ -95,10 +95,10 @@ class CoreController extends Controller
 
 		Mail::send('emails.forgot_password',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id],function($message) use($email){
 
-                        $message->to($email,'Connected Women')->subject('Forgot password');
-                        $message->from('team@connectedwomen.co');
+			$message->to($email,'Connected Women')->subject('Forgot password');
+			$message->from('team@connectedwomen.co');
 
-                    });
+		});
 
 		return view('success_forgot_password');
 
@@ -116,29 +116,17 @@ class CoreController extends Controller
 
 		$user = User::find($request->input('user_id'));
 
-		if(password_verify($request->input('old_password'),$user->password)){
+		$rules = [
+			'new_password'=>'required|same:confirm_new_password',
+		];
 
-			$rules = [
-				'new_password'=>'required|same:confirm_new_password',
-			];
+		DB::table('users')->where('id',$user->id)->update([
+			'password'=>bcrypt($request->input('new_password')),
+		]);
 
+		$request->session()->flash('success','Password updated.');
 
-
-			DB::table('users')->where('id',$user->id)->update([
-				'password'=>bcrypt($request->input('new_password')),
-			]);
-
-			$request->session()->flash('success','Password updated.');
-
-			return view('success_reset_password');
-
-		}else{
-
-			$request->session()->flash('error','Old password incorrect.');
-
-			return back();
-
-		}
+		return view('success_reset_password');
 
 	}
 
@@ -170,8 +158,8 @@ class CoreController extends Controller
 		}else{
 
 			if(Auth::attempt([
-			'email'=>$request->input('email'),
-			'password'=>$request->input('password'),
+				'email'=>$request->input('email'),
+				'password'=>$request->input('password'),
 			])){
 
 				if(Auth::user()->role == 'Admin'){
@@ -201,7 +189,7 @@ class CoreController extends Controller
 				$request->session()->flash('error','Invalid username/password.');
 
 				return back();
-			
+
 			}
 
 		}

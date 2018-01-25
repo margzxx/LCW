@@ -30,11 +30,6 @@
 
 				<br>
 
-				<label style="color:#333;">Old Password</label>
-				<input type="password" name="old_password" class="form-control" placeholder="Password" required>
-
-				<br>
-
 				<label style="color:#333;">New Password</label>
 				<input type="password" name="new_password" class="form-control" placeholder="Password" required>
 
