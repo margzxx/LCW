@@ -31,7 +31,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url('/') }}"><img src="assets/img/logo.png" alt="logo"/ width="130px"></a>
+                    <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ url('assets/img/logo.png') }}" alt="logo"/ width="130px"></a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
