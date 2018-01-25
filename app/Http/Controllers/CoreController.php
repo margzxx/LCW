@@ -127,7 +127,7 @@ class CoreController extends Controller
 
 			$request->session()->flash('success','Password updated.');
 
-			return back();
+			return view('success_reset_password');
 
 		}else{
 
