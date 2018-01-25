@@ -75,6 +75,7 @@ class CoreController extends Controller
 			Mail::send('emails.success_register',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id],function($message) use($email){
 
                         $message->to($email,'Connected Women')->subject('Please activate your account');
+                        $message->from('team@connectedwomen.co');
 
                     });
 
@@ -95,6 +96,7 @@ class CoreController extends Controller
 		Mail::send('emails.forgot_password',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id],function($message) use($email){
 
                         $message->to($email,'Connected Women')->subject('Forgot password');
+                        $message->from('team@connectedwomen.co');
 
                     });
 
