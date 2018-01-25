@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 use DB;
+use Mail;
 use Validator;
 
 use App\Area;
@@ -1447,6 +1448,22 @@ class HomeController extends Controller
 		$request->session()->flash('success','Great! Area deleted.');
 
 		return back();
+
+	}
+
+	public function doSendEmailToVA(Request $request){
+
+		$user = User::find($request->input('user_id'));
+
+		$email = $user->email;
+		$subject = $request->input('subject');
+
+		Mail::send('emails.contact_user',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id,'description'=>$request->input('description')],function($message) use($email,$subject){
+
+                        $message->to($email,'Connected Women')->subject($subject);
+                        $message->from('team@connectedwomen.co');
+
+                    });
 
 	}
 

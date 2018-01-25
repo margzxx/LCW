@@ -621,12 +621,14 @@ use App\Verification;
           
           {{ csrf_field() }}
 
+          <input type="hidden" name="user_id" value="{{ $user->id }}">
+
           <label>Fullname</label>
           <input type="text" name="name" class="form-control" value="{{ Answer::where('question_id',3)->where('user_id',$user->id)->first()->description }}">
 
           <br>
 
-          <label>Retun To Email</label>
+          <label>Return To Email</label>
           <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control">
 
           <br>

@@ -92,5 +92,7 @@ Route::get('bookmark-va/{id}','HomeController@doBookmarkVA');
 Route::get('unbookmark-va/{id}','HomeController@doUnbookmarkVA');
 Route::get('bookmarked-profiles','HomeController@showBookmarkedProfiles');
 
+Route::post('send-email-to-va','HomeController@doSendEmailToVA');
+
 Route::get('debug','CoreController@doDebug');
 Route::get('debug-email','CoreController@doDebugEmail');
