@@ -116,9 +116,11 @@ use App\Verification;
 								<i class="fa fa-search"></i> Dashboard
 							</a></li>
 
+							@if(Auth::user()->role == 'VA' || Auth::user()->role == 'Entrepreneur')
 							<li><a href="{{ url('my-profile') }}">
 								View Profile
 							</a></li>
+							@endif
 
 							<li><a href="{{ url('edit-profile/1') }}">
 								Edit Profile
