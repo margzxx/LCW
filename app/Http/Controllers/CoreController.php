@@ -89,18 +89,32 @@ class CoreController extends Controller
 
 	public function doForgotPassword(Request $request){
 
-		$user = User::where('email',$request->input('email'))->first();
+		$rules = [
+			'email'=>'required|exists:users',
+		];
 
-		$email = $user->email;
+		$validator = Validator::make($request->all(),$rules);
 
-		Mail::send('emails.forgot_password',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id],function($message) use($email){
+		if($validator->fails()){
 
-			$message->to($email,'Connected Women')->subject('Forgot password');
-			$message->from('team@connectedwomen.co');
+			return back()->withErrors($validator);
 
-		});
+		}else{
 
-		return view('success_forgot_password');
+			$user = User::where('email',$request->input('email'))->first();
+
+			$email = $user->email;
+
+			Mail::send('emails.forgot_password',['name'=>$user->firstname.' '.$user->lastname,'email'=>$email,'user_id'=>$user->id],function($message) use($email){
+
+				$message->to($email,'Connected Women')->subject('Forgot password');
+				$message->from('team@connectedwomen.co');
+
+			});
+
+			return view('success_forgot_password');
+
+		}
 
 	}
 
