@@ -443,11 +443,26 @@ use App\Description;
 					<br>
 
 					@elseif($question->type == 'Multiple Text')
+
 					<label>{{ $question->description }}</label>
 
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
-					<input type="text" class="form-control" name="description[]" required>
+					@if($question->id == 40 || $question->id == 91)
+					
+					@for($i = 0; $i <= 4; $i++)
+					<input type="text" class="form-control" name="essential[]" placeholder="Enter essential here" required>
+					<br>
+					@endfor
+
+					@elseif($question->id == 41 || $question->id == 92)
+
+					@for($i = 0; $i <= 4; $i++)
+					<input type="text" class="form-control" name="strength[]" placeholder="Enter strength here" required>
+					<br>
+					@endfor
+
+					@endif
 
 					<br>
 

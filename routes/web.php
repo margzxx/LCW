@@ -96,3 +96,4 @@ Route::post('send-email-to-va','HomeController@doSendEmailToVA');
 
 Route::get('debug','CoreController@doDebug');
 Route::get('debug-email','CoreController@doDebugEmail');
+Route::get('debug-refresh','HomeController@doDebugRefresh');

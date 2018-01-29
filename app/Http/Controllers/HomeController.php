@@ -97,7 +97,51 @@ class HomeController extends Controller
 
 	}
 
+	public function doDebugRefresh(){
+
+		DB::table('answers')->delete();
+		DB::table('verifications')->where('user_id','!=',1)->delete();
+		DB::table('users')->where('id','!=',1)->delete();
+
+		return redirect('login');
+
+	}
+
 	public function doSubmitAnswers(Request $request){
+
+		if($request->input('strength')){
+
+			$strengths = $request->input('strength');
+
+			foreach($strengths as $strength){
+
+				$description = new Description;
+
+				$description->user_id = Auth::user()->id;
+				$description->type = 'Strength';
+				$description->content = $strength;
+				$description->save();
+
+			}
+
+		}
+
+		if($request->input('essential')){
+
+			$essentials = $request->input('essential');
+
+			foreach($essentials as $essential){
+
+				$description = new Description;
+
+				$description->user_id = Auth::user()->id;
+				$description->type = 'Essential';
+				$description->content = $essential;
+				$description->save();
+
+			}
+
+		}
 
 		$rules = [
 			'avatar'=>'max:500000',
