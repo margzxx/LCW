@@ -306,11 +306,49 @@ use App\Description;
 					<br>
 
 					@elseif($question->type == 'Ranking')
-					<label>{{ $question->description }}</label>
+
+					@if($question->id == 77)
+					<h5>Rate the business that you want most need assistance with (by priority)</h5>
+
+					(1 = no priority, 4 = high priority)
+					<br><br>
+					@endif
+
+					@if($question->id == 27)
+					<h5>Rate the roles below according to your skills and work experience (not what you enjoy the most)</h5>
+
+					(1 = no experience, 4 = highly experienced)
+					<br><br>
+					@endif
+
+					@if($question->id == 33 || $question->id == 83)
+					<h5>Rate the roles below according to what you least enjoy (not skill or experience)</h5>
+					(1 = enjoy least, 4 = enjoy most)
+					<br><br>
+					@endif
+
+					<!-- GOALS -->
+					@if($question->id == 46 || $question->id == 97)
+					<h5>Rate this according to which is most important to you?</h5>
+
+					(1 = least important, 4 = most important)
+					<br><br>
+					@endif
+					<!-- GOALS -->
+
+					<div class="row">
+
+						<div class="col-md-3">
+							<label>{{ $question->description }}</label>
+						</div>
+
+					
 
 					<?php
 					$choices = Choice::where('question_id',$question->id)->get();
 					?>
+
+					<div class="col-md-9">
 
 					<select class="form-control" name="description[]">
 						<option value="{{ Answer::where('question_id',$question->id)->where('user_id',Auth::user()->id)->first()->description }}">Currently: {{ Answer::where('question_id',$question->id)->where('user_id',Auth::user()->id)->first()->description }}</option>
@@ -319,7 +357,9 @@ use App\Description;
 						@endforeach
 					</select>
 
-					<br>
+				</div>
+
+					</div>
 
 					@endif
 
@@ -535,13 +575,53 @@ use App\Description;
 
 					<br>
 					@elseif($question->type == 'Ranking')
-					<label>{{ $question->description }}</label>
+
+					<!-- SKILLS -->
+					@if($question->id == 77)
+					<h5>Rate the business that you want most need assistance with (by priority)</h5>
+
+					(1 = no priority, 4 = high priority)
+					<br><br>
+					@endif
+
+					@if($question->id == 27)
+					<h5>Rate the roles below according to your skills and work experience (not what you enjoy the most)</h5>
+
+					(1 = no experience, 4 = highly experienced)
+					<br><br>
+					@endif
+
+					@if($question->id == 33 || $question->id == 83)
+					<h5>Rate the roles below according to what you least enjoy (not skill or experience)</h5>
+					(1 = enjoy least, 4 = enjoy most)
+					<br><br>
+					@endif
+					<!-- SKILLS -->
+
+					<!-- GOALS -->
+					@if($question->id == 46 || $question->id == 97)
+					<h5>Rate this according to which is most important to you?</h5>
+
+					(1 = least important, 4 = most important)
+					<br><br>
+					@endif
+					<!-- GOALS -->
+
+					<div class="row">
+
+						<div class="col-md-3">
+							<label>{{ $question->description }}</label>
+						</div>
+
+					
 
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
 					<?php
 					$choices = Choice::where('question_id',$question->id)->get();
 					?>
+
+					<div class="col-md-9">
 
 					<select class="form-control" name="description[]">
 						@foreach($choices as $choice)
@@ -550,7 +630,11 @@ use App\Description;
 						@endforeach
 					</select>
 
-					<br>
+				</div>
+
+					</div>
+
+					
 
 					@endif
 

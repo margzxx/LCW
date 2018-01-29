@@ -74,11 +74,11 @@ use App\Area;
 	<br>
 
 	<label>Order</label>
-	<input type="number" name="order" class="form-control">
+	<input type="number" name="order" class="form-control" value="{{ $question->order }}">
 
 	<br>
 
-	<input type="submit" class="btn btn-primary" style="color: #333;line-height: .3em">
+	<input type="submit" class="btn btn-primary" style="color: #333;">
 
 	</form>
 
