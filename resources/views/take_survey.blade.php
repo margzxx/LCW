@@ -98,9 +98,9 @@ use App\Description;
 				@if($errors->all())
 				<div class="alert alert-danger" role="alert">
 					Oops! We have an error.
-				  @foreach($errors as $error)
-				  {{ $error }}
-				  @endforeach
+					@foreach($errors as $error)
+					{{ $error }}
+					@endforeach
 				</div>
 				@endif
 
@@ -118,17 +118,17 @@ use App\Description;
 
 					@if($area->id == 1)
 
-						<label>Please upload a professional photograph</label>
-						<input type="file" name="avatar">
+					<label>Please upload a professional photograph</label>
+					<input type="file" name="avatar">
 
-						<br>
+					<br>
 
-						@if(Auth::user()->type == 'VA')
-						<label>Please upload your latest resume/cv or portfolio</label>
-						<input type="file" name="resume">
+					@if(Auth::user()->type == 'VA')
+					<label>Please upload your latest resume/cv or portfolio</label>
+					<input type="file" name="resume">
 
-						<br>
-						@endif
+					<br>
+					@endif
 
 					@endif
 
@@ -342,22 +342,22 @@ use App\Description;
 							<label>{{ $question->description }}</label>
 						</div>
 
-					
 
-					<?php
-					$choices = Choice::where('question_id',$question->id)->get();
-					?>
 
-					<div class="col-md-9">
+						<?php
+						$choices = Choice::where('question_id',$question->id)->get();
+						?>
 
-					<select class="form-control" name="description[]">
-						<option value="{{ Answer::where('question_id',$question->id)->where('user_id',Auth::user()->id)->first()->description }}">Currently: {{ Answer::where('question_id',$question->id)->where('user_id',Auth::user()->id)->first()->description }}</option>
-						@foreach($choices as $choice)
-						<option value="{{ $choice->description }}">{{ $choice->description }}</option>
-						@endforeach
-					</select>
+						<div class="col-md-9">
 
-				</div>
+							<select class="form-control" name="description[]">
+								<option value="{{ Answer::where('question_id',$question->id)->where('user_id',Auth::user()->id)->first()->description }}">Currently: {{ Answer::where('question_id',$question->id)->where('user_id',Auth::user()->id)->first()->description }}</option>
+								@foreach($choices as $choice)
+								<option value="{{ $choice->description }}">{{ $choice->description }}</option>
+								@endforeach
+							</select>
+
+						</div>
 
 					</div>
 
@@ -395,17 +395,17 @@ use App\Description;
 
 					@if($area->id == 1)
 
-						<label>Please upload a professional photograph</label>
-						<input type="file" name="avatar">
+					<label>Please upload a professional photograph</label>
+					<input type="file" name="avatar">
 
-						<br>
+					<br>
 
-						@if(Auth::user()->type == 'VA')
-						<label>Please upload your latest resume/cv or portfolio</label>
-						<input type="file" name="resume">
+					@if(Auth::user()->type == 'VA')
+					<label>Please upload your latest resume/cv or portfolio</label>
+					<input type="file" name="resume">
 
-						<br>
-						@endif
+					<br>
+					@endif
 
 					@endif
 
@@ -427,17 +427,17 @@ use App\Description;
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
 					@if($question->id == 3 || $question->id == 58)
-						<input type="text" class="form-control" name="description[]" value="{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}" required>
+					<input type="text" class="form-control" name="description[]" value="{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}" required>
 					@elseif($question->id == 4 || $question->id == 59)
-						<input type="text" class="form-control" name="description[]" value="{{ Auth::user()->mobile_number }}" required>
+					<input type="text" class="form-control" name="description[]" value="{{ Auth::user()->mobile_number }}" required>
 					@elseif($question->id == 5 || $question->id == 60)
-						<input type="text" class="form-control" name="description[]" value="+{{ Country::where('name',Auth::user()->country)->first()->calling_code }}" required>
+					<input type="text" class="form-control" name="description[]" value="+{{ Country::where('name',Auth::user()->country)->first()->calling_code }}" required>
 					@elseif($question->id == 9 || $question->id == 64)
-						<input type="text" class="form-control" name="description[]" value="{{ Country::where('name',Auth::user()->country)->first()->citizenship }}" required>
+					<input type="text" class="form-control" name="description[]" value="{{ Country::where('name',Auth::user()->country)->first()->citizenship }}" required>
 					@elseif($question->id == 10 || $question->id == 63)
-						<input type="text" class="form-control" name="description[]" value="{{ Country::where('name',Auth::user()->country)->first()->capital }}" required>
+					<input type="text" class="form-control" name="description[]" value="{{ Country::where('name',Auth::user()->country)->first()->capital }}" required>
 					@else
-						<input type="text" class="form-control" name="description[]" required>
+					<input type="text" class="form-control" name="description[]" required>
 					@endif
 
 					<br>
@@ -466,9 +466,9 @@ use App\Description;
 					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
 					@if($question->id == 2 || $question->id == 57)
-						<input type="email" class="form-control" name="description[]" value="{{ Auth::user()->email }}" required>
+					<input type="email" class="form-control" name="description[]" value="{{ Auth::user()->email }}" required>
 					@else
-						<input type="email" class="form-control" name="description[]" required>
+					<input type="email" class="form-control" name="description[]" required>
 					@endif
 
 					<br>
@@ -613,24 +613,24 @@ use App\Description;
 							<label>{{ $question->description }}</label>
 						</div>
 
-					
 
-					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
-					<?php
-					$choices = Choice::where('question_id',$question->id)->get();
-					?>
+						<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
-					<div class="col-md-9">
+						<?php
+						$choices = Choice::where('question_id',$question->id)->get();
+						?>
 
-					<select class="form-control" name="description[]">
-						@foreach($choices as $choice)
+						<div class="col-md-9">
 
-						<option value="{{ $choice->description }}">{{ $choice->description }}</option>
-						@endforeach
-					</select>
+							<select class="form-control" name="description[]">
+								@foreach($choices as $choice)
 
-				</div>
+								<option value="{{ $choice->description }}">{{ $choice->description }}</option>
+								@endforeach
+							</select>
+
+						</div>
 
 					</div>
 
