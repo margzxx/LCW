@@ -100,6 +100,8 @@ class HomeController extends Controller
 	public function doDebugRefresh(){
 
 		DB::table('answers')->delete();
+		DB::table('descriptions')->delete();
+		DB::table('files')->delete();
 		DB::table('verifications')->where('user_id','!=',1)->delete();
 		DB::table('users')->where('id','!=',1)->delete();
 
@@ -289,6 +291,44 @@ class HomeController extends Controller
 
 	public function doUpdateAnswers(Request $request){
 
+		if($request->input('strength')){
+
+			DB::table('descriptions')->where('type','Strength')->where('user_id',Auth::user()->id)->delete();
+
+			$strengths = $request->input('strength');
+
+			foreach($strengths as $strength){
+
+				$description = new Description;
+
+				$description->user_id = Auth::user()->id;
+				$description->type = 'Strength';
+				$description->content = $strength;
+				$description->save();
+
+			}
+
+		}
+
+		if($request->input('essential')){
+
+			DB::table('descriptions')->where('type','Essential')->where('user_id',Auth::user()->id)->delete();
+
+			$essentials = $request->input('essential');
+
+			foreach($essentials as $essential){
+
+				$description = new Description;
+
+				$description->user_id = Auth::user()->id;
+				$description->type = 'Essential';
+				$description->content = $essential;
+				$description->save();
+
+			}
+
+		}
+
 		if($request->file('avatar')){
 
 			$image_name = time().Auth::user()->id.'.'.$request->file('avatar')->getClientOriginalExtension();
@@ -399,6 +439,44 @@ class HomeController extends Controller
 	}
 
 	public function doEditProfile(Request $request){
+
+		if($request->input('strength')){
+
+			DB::table('descriptions')->where('type','Strength')->where('user_id',Auth::user()->id)->delete();
+
+			$strengths = $request->input('strength');
+
+			foreach($strengths as $strength){
+
+				$description = new Description;
+
+				$description->user_id = Auth::user()->id;
+				$description->type = 'Strength';
+				$description->content = $strength;
+				$description->save();
+
+			}
+
+		}
+
+		if($request->input('essential')){
+
+			DB::table('descriptions')->where('type','Essential')->where('user_id',Auth::user()->id)->delete();
+
+			$essentials = $request->input('essential');
+
+			foreach($essentials as $essential){
+
+				$description = new Description;
+
+				$description->user_id = Auth::user()->id;
+				$description->type = 'Essential';
+				$description->content = $essential;
+				$description->save();
+
+			}
+
+		}
 
 		if($request->file('avatar')){
 

@@ -7,6 +7,9 @@ use App\Choice;
 use App\File;
 use App\Area;
 use App\Description;
+
+$strengths = Description::where('type','Strength')->where('user_id',Auth::user()->id)->get();
+$essentials = Description::where('type','Essential')->where('user_id',Auth::user()->id)->get();
 ?>
 
 <style type="text/css">
@@ -155,11 +158,24 @@ use App\Description;
 					<br>
 
 					@elseif($question->type == 'Multiple Text')
+
 					<label>{{ $question->description }}</label>
 
-					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
+					@if($question->id == 40 || $question->id == 91)
+					
+					@foreach($essentials as $essential)
+					<input type="text" class="form-control" name="essential[]" placeholder="Enter essential here" value="{{ $essential->content }}" required>
+					<br>
+					@endforeach
 
-					<input type="text" class="form-control" name="description[]" value="{{ Answer::where('question_id',$question->id)->where('user_id',Auth::user()->id)->first()->description }}" required>
+					@elseif($question->id == 41 || $question->id == 92)
+
+					@foreach($strengths as $strength)
+					<input type="text" class="form-control" name="strength[]" placeholder="Enter strength here" value="{{ $strength->content }}" required>
+					<br>
+					@endforeach
+
+					@endif
 
 					<br>
 
@@ -445,8 +461,6 @@ use App\Description;
 					@elseif($question->type == 'Multiple Text')
 
 					<label>{{ $question->description }}</label>
-
-					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
 
 					@if($question->id == 40 || $question->id == 91)
 					

@@ -112,11 +112,13 @@ use App\Verification;
 							<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 
+							@if(Auth::user()->role == 'Admin' || Auth::user()->type == 'Entrepreneur')
 							<li><a href="{{ url('dashboard') }}">
 								<i class="fa fa-search"></i> Dashboard
 							</a></li>
+							@endif
 
-							@if(Auth::user()->role == 'VA' || Auth::user()->role == 'Entrepreneur')
+							@if(Auth::user()->type == 'VA' || Auth::user()->type == 'Entrepreneur')
 							<li><a href="{{ url('my-profile') }}">
 								View Profile
 							</a></li>

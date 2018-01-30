@@ -8,6 +8,9 @@ use App\File;
 use App\Bookmark;
 use App\Description;
 use App\Verification;
+
+$strengths = Description::where('type','Strength')->where('user_id',Auth::user()->id)->get();
+$essentials = Description::where('type','Essential')->where('user_id',Auth::user()->id)->get();
 ?>
 
 <div class="container" style="padding-top: 50px; padding-bottom: 70px">
@@ -144,9 +147,15 @@ use App\Verification;
 						</div>
 
 						<div class="col-md-4">
-							<a href="{{ url(File::where('type','Resume')->where('user_id',$user->id)->first()->document) }}">
+							@if(File::where('type','Resume')->where('user_id',$user->id)->exists())
+								<a href="{{ url(File::where('type','Resume')->where('user_id',$user->id)->first()->document) }}">
 							<input type="button" class="btn btn-primary" value="VIEW CV / PORTFOLIO" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7;">
 							</a>
+							@else
+								<a href="#">
+							<input type="button" class="btn btn-primary" value="VIEW CV / PORTFOLIO" style="color: #333;background:#30c3e7;border: 1px solid #30c3e7;">
+							</a>
+							@endif
 
 						</div>
 
@@ -470,25 +479,29 @@ use App\Verification;
 					<div class="row">
 
 						<div class="col-md-6">
-							@if($user->type == 'VA')
+							@if(Auth::user()->type == 'VA')
 							<h4>Essential Tools</h4>
-							{{ Answer::where('question_id',40)->where('user_id',$user->id)->first()->description }}
 							@else
 							<h4>Tools For The Role</h4>
-							{{ Answer::where('question_id',91)->where('user_id',$user->id)->first()->description }}
-
 							@endif
+
+							@foreach($essentials as $essential)
+							{{ $essential->content }}
+							<br>
+							@endforeach
 						</div>
 
 						<div class="col-md-6">
-							@if($user->type == 'VA')
+							@if(Auth::user()->type == 'VA')
 							<h4>Strengths</h4>
-							{{ Answer::where('question_id',41)->where('user_id',$user->id)->first()->description }}
 							@else
 							<h4>Strengths For The Role</h4>
-							{{ Answer::where('question_id',92)->where('user_id',$user->id)->first()->description }}
-
 							@endif
+
+							@foreach($strengths as $strength)
+							{{ $strength->content }}
+							<br>
+							@endforeach
 						</div>
 
 					</div>

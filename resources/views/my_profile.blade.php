@@ -6,6 +6,9 @@ use App\Choice;
 use App\File;
 use App\Description;
 use App\Verification;
+
+$strengths = Description::where('type','Strength')->where('user_id',Auth::user()->id)->get();
+$essentials = Description::where('type','Essential')->where('user_id',Auth::user()->id)->get();
 ?>
 
 <div class="container" style="padding-top: 50px; padding-bottom: 70px">
@@ -461,23 +464,27 @@ use App\Verification;
 						<div class="col-md-6">
 							@if(Auth::user()->type == 'VA')
 							<h4>Essential Tools</h4>
-							{{ Answer::where('question_id',40)->where('user_id',Auth::user()->id)->first()->description }}
 							@else
 							<h4>Tools For The Role</h4>
-							{{ Answer::where('question_id',91)->where('user_id',Auth::user()->id)->first()->description }}
-
 							@endif
+
+							@foreach($essentials as $essential)
+							{{ $essential->content }}
+							<br>
+							@endforeach
 						</div>
 
 						<div class="col-md-6">
 							@if(Auth::user()->type == 'VA')
 							<h4>Strengths</h4>
-							{{ Answer::where('question_id',41)->where('user_id',Auth::user()->id)->first()->description }}
 							@else
 							<h4>Strengths For The Role</h4>
-							{{ Answer::where('question_id',92)->where('user_id',Auth::user()->id)->first()->description }}
-
 							@endif
+
+							@foreach($strengths as $strength)
+							{{ $strength->content }}
+							<br>
+							@endforeach
 						</div>
 
 					</div>
