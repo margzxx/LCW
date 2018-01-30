@@ -22,7 +22,13 @@
 
 				@if($errors->any() || Session::get('error'))
 				<div class="alert alert-danger" role="alert">
-				  ERROR: The password you entered is incorrect. <a href="{{ url('forgot-password') }}">Lost your password?</a>
+				  ERROR:  {{ Session::get('error') }}</a>
+				</div>
+				@endif
+
+				@if($errors->any() || Session::get('invalid-error'))
+				<div class="alert alert-danger" role="alert">
+				  ERROR: {{ Session::get('invalid-error') }} <a href="{{ url('forgot-password') }}">Lost your password?</a>
 				</div>
 				@endif
 

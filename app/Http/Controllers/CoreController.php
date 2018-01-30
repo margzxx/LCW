@@ -156,6 +156,18 @@ class CoreController extends Controller
 
 	}
 
+	public function doRegisterActivateUser($id){
+
+		DB::table('users')->where('id',$id)->update([
+			'status'=>1,
+		]);
+
+		Auth::loginUsingId($id);
+
+		return redirect('take-survey/1');
+
+	}
+
 	public function doLogin(Request $request){
 
 		$rules = [
@@ -176,31 +188,39 @@ class CoreController extends Controller
 				'password'=>$request->input('password'),
 			])){
 
-				if(Auth::user()->role == 'Admin'){
+				if(Auth::user()->status == 0){
 
-					return redirect('dashboard');
+					Auth::logout();
+
+					$request->session()->flash('error','Account not yet activated.');
+
+					return back();
 
 				}else{
 
-					if(Verification::where('user_id',Auth::user()->id)->exists()){
+					if(Auth::user()->role == 'Admin'){
 
-						return redirect('my-profile');
+					return redirect('dashboard');
 
 					}else{
 
-						return redirect('take-survey/1');
+						if(Verification::where('user_id',Auth::user()->id)->exists()){
+
+							return redirect('my-profile');
+
+						}else{
+
+							return redirect('take-survey/1');
+
+						}
 
 					}
 
-				}
-
-				
-
-				
+				}	
 
 			}else{
 
-				$request->session()->flash('error','Invalid username/password.');
+				$request->session()->flash('invalid-error',"The password you entered is incorrect.");
 
 				return back();
 
