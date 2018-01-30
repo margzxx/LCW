@@ -102,6 +102,7 @@ class HomeController extends Controller
 		DB::table('answers')->delete();
 		DB::table('descriptions')->delete();
 		DB::table('files')->delete();
+		DB::table('bookmarks')->delete();
 		DB::table('verifications')->where('user_id','!=',1)->delete();
 		DB::table('users')->where('id','!=',1)->delete();
 
